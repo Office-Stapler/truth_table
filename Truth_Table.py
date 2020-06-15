@@ -54,6 +54,7 @@ class Truth_Table:
         if not self._check_valid_expr():
             raise ValueError('Expression is not valid')
         self.postfix = self._generate_postfix()
+        self.output = self.process_all_inputs()
 
     def _check_valid_expr(self):
         """ 
@@ -130,6 +131,25 @@ class Truth_Table:
                 elif obj == '^':
                     stack.append(num2 ^ num1)
         return stack.pop(0)
+    def process_all_inputs(self)->list:
+        """
+        Processes all possible values for the function
+        """
+        output = []
+        for values in list(zip(*self.inputs.values())):
+            output.append(self.process_postfix(values))
+        return output
+    
+    def print_truth_table(self):
+        """
+        Prints out the truth table
+        """
+        variables = self.variables[::]
+        variables.append('output')
+        print(' '.join(variables))
+        for elements in list(zip(*self.inputs.values(), self.output)):
+            print(elements)
+    
     def _generate_postfix(self) -> list:
         """ 
         Uses Shunting Yard algorithm to generate a postfix queue that will
