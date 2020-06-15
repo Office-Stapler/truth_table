@@ -12,5 +12,5 @@ the number of distinct variables. Once you have the truth_table instance, you ca
 in a list of values into the ``process_postfix`` to evaluate the function.
 # Issues
 - So far the truth_table might not always generate the correct output for each function.
-- It isn't able to parse the ~ (not) symbol yet
+- <s>It isn't able to parse the ~ (not) symbol yet</s>
 - The valid expression checker does not raise an error when the unary operator ~ (not) is used as an operator between two variables
