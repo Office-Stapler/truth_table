@@ -130,6 +130,8 @@ class Truth_Table:
                     stack.append(num2 and num1)
                 elif obj == '^':
                     stack.append(num2 ^ num1)
+                elif obj == '~':
+                    stack.append(int(not num1))
         return stack.pop(0)
     def process_all_inputs(self)->list:
         """
