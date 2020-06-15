@@ -130,7 +130,7 @@ class Truth_Table:
                 elif obj == '^':
                     stack.append(num2 ^ num1)
         return stack.pop(0)
-    def _generate_postfix(self) -> queue:
+    def _generate_postfix(self) -> list:
         """ 
         Uses Shunting Yard algorithm to generate a postfix queue that will
         later be used to evaluate all inputs of each variable.
