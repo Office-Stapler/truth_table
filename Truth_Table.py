@@ -180,12 +180,16 @@ class Truth_Table:
                 if stack[-1] == '(':
                     stack.append(char)
                     continue
-                op1 = self.operators.index(stack[-1])
-                op2 = self.operators.index(char)
-                if op2 > op1:
-                    q.append(stack.pop())
+                while True:
+                    if not len(stack):
+                        break 
+                    op1 = self.operators.index(stack[-1])
+                    op2 = self.operators.index(char)
+                    if op2 > op1:
+                        q.append(stack.pop())
+                    else:
+                        break
                 stack.append(char)
-
         while len(stack) != 0:
             q.append(stack.pop())
         return q
