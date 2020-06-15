@@ -1,5 +1,3 @@
-import queue
-import copy
 from generate_numberinput import generate
 class Truth_Table:
     """
