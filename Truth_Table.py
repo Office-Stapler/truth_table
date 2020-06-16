@@ -68,6 +68,7 @@ class Truth_Table:
         i = 0
         prevOperator = True
         prevVariable = False
+        self.function = self.function.replace('~~', '')
         for char in self.function:
             if char == '(':
                 i += 1
@@ -78,8 +79,11 @@ class Truth_Table:
                     return False
                 prevVariable = True
                 prevOperator = False
+            elif char == '~':
+                if not prevOperator:
+                    return False
             elif char in self.operators:
-                if prevOperator and char != '~':
+                if prevOperator:
                     return False
                 prevVariable = False
                 prevOperator = True
@@ -87,7 +91,7 @@ class Truth_Table:
                 return False
             if i < 0:
                 return False
-        self.function = self.function.replace('~~', '')
+        
         return True
     def process_postfix(self, values):
         """
@@ -146,9 +150,11 @@ class Truth_Table:
         """
         Prints out the truth table
         """
+        print('(', end='')
         variables = self.variables[::]
         variables.append('output')
-        print(' '.join(variables))
+        print(', '.join(variables), end='')
+        print(')')
         for elements in list(zip(*self.inputs.values(), self.output)):
             print(elements)
     
