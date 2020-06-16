@@ -13,4 +13,4 @@ in a list of values into the ``process_postfix`` to evaluate the function.
 # Issues
 - So far the truth_table might not always generate the correct output for each function.
 - <s>It isn't able to parse the ~ (not) symbol yet</s>
-- The valid expression checker does not raise an error when the unary operator ~ (not) is used as an operator between two variables
+- <s>The valid expression checker does not raise an error when the unary operator ~ (not) is used as an operator between two variables</s>
