@@ -66,8 +66,11 @@ class Truth_Table:
             Whether the expr is a valid expr
         """
         i = 0
+        # checks if the previous character is an operator or variable
         prevOperator = True
         prevVariable = False
+
+        # replaces all the double nots to nothing since it is replaced
         self.function = self.function.replace('~~', '')
         for char in self.function:
             if char == '(':
@@ -75,11 +78,13 @@ class Truth_Table:
             elif char == ')':
                 i -= 1
             elif char in self.variables: 
+                # if the previous character was a variable, return false
                 if prevVariable:
                     return False
                 prevVariable = True
                 prevOperator = False
             elif char == '~':
+                # if the previous character is not an operator
                 if not prevOperator:
                     return False
             elif char in self.operators:
